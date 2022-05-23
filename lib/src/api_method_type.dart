@@ -1,3 +1,4 @@
+/// Api Method Type Constants
 class APIMethodType {
   static const int GET = 0;
   static const int POST = 1;

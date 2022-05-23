@@ -99,6 +99,16 @@ void main() async{
 
   print("********REVERSAL**********<<<<<<<<<<<${res4?.getBody()}>>>>>>>>>>>**********************REVERSAL********");
 
+  final res5 = await mpesa.getTransactionStatus(
+      inputQueryReference: "000000000000000000001",
+      inputServiceProviderCode: "000000",
+      inputThirdPartyConversationID: "asv02e5958774f7ba228d83d0d689761",
+      inputCountry: "TZN"
+  );
+
+
+  print(
+      "********Transaction Status**********<<<<<<<<<<<${res5?.getBody()}>>>>>>>>>>>**********************Transaction Status********");
 
 
 }
