@@ -1,5 +1,5 @@
 name: mpesa_sdk
-description: This is a dart wrapper around M-PESA  Open API. Written in pure dart which means it'
+description: This is a dart wrapper around M-PESA  Open API. Written in pure dart
 version: 0.1.0+1
 repository: https://github.com/mghase/mpesa_sdk
 homepage: https://github.com/mghase/mpesa_sdk
