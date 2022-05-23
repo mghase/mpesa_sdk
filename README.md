@@ -61,9 +61,46 @@ void main() async{
       inputTransactionReference: "T12774C", // UNIQUE
       inputPurchasedItemsDesc: "BAG");
 
+  print("********C2B**********<<<<<<<<<<<${res?.getBody()}>>>>>>>>>>>**********************C2B********");
 
-  print("************<<<<<<<<<<<${res?.getBody()}");
-  
+
+  final res2 = await mpesa.b2c(
+      inputAmount: 1000,
+      inputCustomerMSISDN: "000000000001",
+      inputServiceProviderCode: "000000",
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
+      inputThirdPartyConversationID: "as2v02e5yy58774fttt228d83d0d6897613444",
+      inputTransactionReference: "T127744",
+      inputPaymentItemsDesc: "SALARY PAYMENT");
+
+  print("********B2C**********<<<<<<<<<<<${res2?.getBody()}>>>>>>>>>>>**********************B2C********");
+
+
+  final res3 = await mpesa.b2b(
+      inputAmount: 1000,
+      inputReceiverPartyCode: "000001",
+      inputPrimaryPartyCode: "000000",
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
+      inputThirdPartyConversationID: "as3v02e5yy58774fttt228d83d0d68976155",
+      inputTransactionReference: "T1267755",
+      inputPaymentItemsDesc: "SALARY PAYMENT");
+
+  print("********B2B**********<<<<<<<<<<<${res3?.getBody()}>>>>>>>>>>>**********************B2B********");
+
+  final res4 = await mpesa.reversal(
+      inputReversalAmount: 25,
+      inputServiceProviderCode: "000000",
+      inputThirdPartyConversationID: "asv02e5958774f7ba228d83d0d689777",
+      inputTransactionID: "0000000000001",
+      inputCountry: "TZN"
+  );
+
+  print("********REVERSAL**********<<<<<<<<<<<${res4?.getBody()}>>>>>>>>>>>**********************REVERSAL********");
+
+
+
 }
 ```
 
