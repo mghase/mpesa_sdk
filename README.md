@@ -13,7 +13,7 @@ Ready Methods/APIs
 - [√] B2C
 - [√] B2B
 - [√] REVERSAL
-- [x] TRANSACTION STATUS
+- [√] TRANSACTION STATUS
 
 
 
