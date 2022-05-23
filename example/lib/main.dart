@@ -7,13 +7,18 @@ void main() async{
   String apiKey= "VursptPgyxo4hyfD8SBWVQmP9HWCzvfj";
 
   final mpesa = Mpesa(
-       env: ENV.sandbox,
-      apiKey: apiKey, publicKey: publicKey);
+        env: ENV.sandbox,
+        market: MarketCountry.vodacomTZN,
+        apiKey: apiKey,
+        publicKey: publicKey
+  );
 
   final res = await mpesa.c2b(
       inputAmount: 1000,
       inputCustomerMSISDN: "000000000001",
       inputServiceProviderCode: "000000",
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
       inputThirdPartyConversationID: "asv02e5yy58774fttt228d83d0d689761",
       inputTransactionReference: "T12774C",
       inputPurchasedItemsDesc: "BAG");

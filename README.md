@@ -1,6 +1,10 @@
 # mpesa-sdk
 
-Dart package for M-Pesa API(Open API) (TANZANIA )
+Dart package for VODACOM M-Pesa API(Open API) (TANZANIA,GHANA AND LESOTHO )
+MARKET = vodacomTZN, vodafoneGHA, vodacomLES
+COUNTRY = TZN, GHA, LES
+CURRENCY = TZS, GHS, LSL
+
 
 ## Features
 Ready Methods/APIs
@@ -41,15 +45,21 @@ void main() async{
 
   final mpesa = Mpesa(
       env: ENV.sandbox,
-      apiKey: apiKey, publicKey: publicKey);
+      market: MarketCountry.vodacomTZN,
+      apiKey: apiKey,
+      publicKey: publicKey
+  );
 
   final res = await mpesa.c2b(
       inputAmount: 1000,
-      inputCustomerMSISDN: "000000000001", //customer phone number +25578xxxxxxxxx
-      inputServiceProviderCode: "000000", //provided code after registering
-      inputThirdPartyConversationID: "asv02e5yy58774fttt228d83d0d689761",//unique
-      inputTransactionReference: "T12774C", //unique
+      inputCustomerMSISDN: "000000000001", // CUSTOMER PHONE NUMBER
+      inputServiceProviderCode: "000000", // PROVIDED CODE BY VODACOM AFTER REGISTERING YOUR ORG.
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
+      inputThirdPartyConversationID: "asv02e5yy58774fttt228d83d0d689761", // UNIQUE
+      inputTransactionReference: "T12774C", // UNIQUE
       inputPurchasedItemsDesc: "BAG");
+
 
   print("************<<<<<<<<<<<${res?.getBody()}");
   

@@ -1,7 +1,8 @@
 name: mpesa_sdk
 description: Tanzania Open API Library SDK
 version: 0.0.1
-homepage:
+author: Sacick Mghase
+homepage: https://github.com/mghase/mpesa_sdk.git
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
