@@ -4,7 +4,7 @@ import 'package:mpesa_sdk/mpesa_sdk.dart';
 
 void main() async{
   String publicKey = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArv9yxA69XQKBo24BaF/D+fvlqmGdYjqLQ5WtNBb5tquqGvAvG3WMFETVUSow/LizQalxj2ElMVrUmzu5mGGkxK08bWEXF7a1DEvtVJs6nppIlFJc2SnrU14AOrIrB28ogm58JjAl5BOQawOXD5dfSk7MaAA82pVHoIqEu0FxA8BOKU+RGTihRU+ptw1j4bsAJYiPbSX6i71gfPvwHPYamM0bfI4CmlsUUR3KvCG24rB6FNPcRBhM3jDuv8ae2kC33w9hEq8qNB55uw51vK7hyXoAa+U7IqP1y6nBdlN25gkxEA8yrsl1678cspeXr+3ciRyqoRgj9RD/ONbJhhxFvt1cLBh+qwK2eqISfBb06eRnNeC71oBokDm3zyCnkOtMDGl7IvnMfZfEPFCfg5QgJVk1msPpRvQxmEsrX9MQRyFVzgy2CWNIb7c+jPapyrNwoUbANlN8adU1m6yOuoX7F49x+OjiG2se0EJ6nafeKUXw/+hiJZvELUYgzKUtMAZVTNZfT8jjb58j8GVtuS+6TM2AutbejaCV84ZK58E2CRJqhmjQibEUO6KPdD7oTlEkFy52Y1uOOBXgYpqMzufNPmfdqqqSM4dU70PO8ogyKGiLAIxCetMjjm6FCMEA3Kc8K0Ig7/XtFm9By6VxTJK1Mg36TlHaZKP6VzVLXMtesJECAwEAAQ==";
-  String apiKey= "VursptPgyxo4hyfD8SBWVQmP9HWCzvfj";
+  String apiKey= "eRJuTmYzqttBt4V39fEQSdnZrdLcU0N8";
 
   final mpesa = Mpesa(
         env: ENV.sandbox,
@@ -15,16 +15,54 @@ void main() async{
 
   final res = await mpesa.c2b(
       inputAmount: 1000,
+      inputCustomerMSISDN: "000000000001", // CUSTOMER PHONE NUMBER
+      inputServiceProviderCode: "000000", // PROVIDED CODE BY VODACOM AFTER REGISTERING YOUR ORG.
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
+      inputThirdPartyConversationID: "asv02e5yy58774fttt228d83d0d689761", // UNIQUE
+      inputTransactionReference: "T12774C", // UNIQUE
+      inputPurchasedItemsDesc: "BAG");
+
+  print("********C2B**********<<<<<<<<<<<${res?.getBody()}>>>>>>>>>>>**********************C2B********");
+
+
+  final res2 = await mpesa.b2c(
+      inputAmount: 1000,
       inputCustomerMSISDN: "000000000001",
       inputServiceProviderCode: "000000",
       inputCountry: "TZN",
       inputCurrency: "TZS",
-      inputThirdPartyConversationID: "asv02e5yy58774fttt228d83d0d689761",
-      inputTransactionReference: "T12774C",
-      inputPurchasedItemsDesc: "BAG");
+      inputThirdPartyConversationID: "as2v02e5yy58774fttt228d83d0d6897613444",
+      inputTransactionReference: "T127744",
+      inputPaymentItemsDesc: "SALARY PAYMENT");
 
-  print("********RESS****<<<<<<<<<<<${res?.getBody()}");
- //
+  print("********B2C**********<<<<<<<<<<<${res2?.getBody()}>>>>>>>>>>>**********************B2C********");
+
+
+  final res3 = await mpesa.b2b(
+      inputAmount: 1000,
+      inputReceiverPartyCode: "000001",
+      inputPrimaryPartyCode: "000000",
+      inputCountry: "TZN",
+      inputCurrency: "TZS",
+      inputThirdPartyConversationID: "as3v02e5yy58774fttt228d83d0d68976155",
+      inputTransactionReference: "T1267755",
+      inputPaymentItemsDesc: "SALARY PAYMENT");
+
+  print("********B2B**********<<<<<<<<<<<${res3?.getBody()}>>>>>>>>>>>**********************B2B********");
+
+  final res4 = await mpesa.reversal(
+      inputReversalAmount: 25,
+      inputServiceProviderCode: "000000",
+      inputThirdPartyConversationID: "asv02e5958774f7ba228d83d0d689777",
+      inputTransactionID: "0000000000001",
+      inputCountry: "TZN"
+  );
+
+  print("********REVERSAL**********<<<<<<<<<<<${res4?.getBody()}>>>>>>>>>>>**********************REVERSAL********");
+
+
+  //
  //  // Cryptom crypto = Cryptom(publicKey);
  //  APIContext apiContext = APIContext(headers: {}, parameters: {})
  //    ..setPublicKey(publicKey)

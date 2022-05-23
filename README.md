@@ -10,10 +10,11 @@ CURRENCY = TZS, GHS, LSL
 Ready Methods/APIs
 
 - [√] C2B
-- [x] B2B
-- [x] B2C
+- [√] B2C
+- [√] B2B
+- [√] REVERSAL
 - [x] TRANSACTION STATUS
-- [x] REVERSAL
+
 
 
 ## Getting started

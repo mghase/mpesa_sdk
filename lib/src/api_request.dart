@@ -69,7 +69,7 @@ class APIRequest {
 
     final r = await dio.put(
       context.getUrl,
-      queryParameters: context.getParameters(),
+      data: context.getParameters(),
       options: Options(
         headers: context.getHeaders(),
       ),
